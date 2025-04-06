@@ -1,0 +1,31 @@
+﻿@page
+@model DishShare.Pages.Ratings.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Rating</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating.RatingValue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating.RatingValue)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating.RatingDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating.RatingDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Rating.RatingId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

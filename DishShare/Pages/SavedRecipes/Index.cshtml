@@ -1,0 +1,48 @@
+﻿@page
+@model DishShare.Pages.SavedRecipes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SavedRecipe[0].AddingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SavedRecipe[0].CollectionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SavedRecipe[0].PersonalNotes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.SavedRecipe) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CollectionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonalNotes)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.SavedRecipeID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.SavedRecipeID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.SavedRecipeID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
