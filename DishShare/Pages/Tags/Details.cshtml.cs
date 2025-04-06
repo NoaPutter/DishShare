@@ -28,7 +28,7 @@ namespace DishShare.Pages.Tags
                 return NotFound();
             }
 
-            var tag = await _context.Tag.FirstOrDefaultAsync(m => m.TagID == id);
+            var tag = await _context.Tag.FirstOrDefaultAsync(m => m.ID == id);
             if (tag == null)
             {
                 return NotFound();

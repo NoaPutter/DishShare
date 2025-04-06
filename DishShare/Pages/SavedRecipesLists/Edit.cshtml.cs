@@ -30,12 +30,13 @@ namespace DishShare.Pages.SavedRecipesLists
                 return NotFound();
             }
 
-            var savedrecipeslist =  await _context.SavedRecipesList.FirstOrDefaultAsync(m => m.SavedRecipesListID == id);
+            var savedrecipeslist =  await _context.SavedRecipesList.FirstOrDefaultAsync(m => m.ID == id);
             if (savedrecipeslist == null)
             {
                 return NotFound();
             }
             SavedRecipesList = savedrecipeslist;
+           ViewData["SavedRecipeID"] = new SelectList(_context.SavedRecipe, "ID", "ID");
             return Page();
         }
 
@@ -56,7 +57,7 @@ namespace DishShare.Pages.SavedRecipesLists
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SavedRecipesListExists(SavedRecipesList.SavedRecipesListID))
+                if (!SavedRecipesListExists(SavedRecipesList.ID))
                 {
                     return NotFound();
                 }
@@ -71,7 +72,7 @@ namespace DishShare.Pages.SavedRecipesLists
 
         private bool SavedRecipesListExists(int id)
         {
-            return _context.SavedRecipesList.Any(e => e.SavedRecipesListID == id);
+            return _context.SavedRecipesList.Any(e => e.ID == id);
         }
     }
 }

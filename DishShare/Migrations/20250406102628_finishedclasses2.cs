@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DishShare.Migrations
 {
     /// <inheritdoc />
-    public partial class finishedclasses1 : Migration
+    public partial class finishedclasses2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,7 @@ namespace DishShare.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -25,14 +25,14 @@ namespace DishShare.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserID);
+                    table.PrimaryKey("PK_User", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SavedRecipe",
                 columns: table => new
                 {
-                    SavedRecipeID = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AddingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CollectionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -41,12 +41,12 @@ namespace DishShare.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SavedRecipe", x => x.SavedRecipeID);
+                    table.PrimaryKey("PK_SavedRecipe", x => x.ID);
                     table.ForeignKey(
                         name: "FK_SavedRecipe_User_UserID",
                         column: x => x.UserID,
                         principalTable: "User",
-                        principalColumn: "UserID",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -54,19 +54,19 @@ namespace DishShare.Migrations
                 name: "SavedRecipesList",
                 columns: table => new
                 {
-                    SavedRecipesListID = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ListName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SavedRecipeID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SavedRecipesList", x => x.SavedRecipesListID);
+                    table.PrimaryKey("PK_SavedRecipesList", x => x.ID);
                     table.ForeignKey(
                         name: "FK_SavedRecipesList_SavedRecipe_SavedRecipeID",
                         column: x => x.SavedRecipeID,
                         principalTable: "SavedRecipe",
-                        principalColumn: "SavedRecipeID",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -74,7 +74,7 @@ namespace DishShare.Migrations
                 name: "Recipe",
                 columns: table => new
                 {
-                    RecipeId = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -87,12 +87,12 @@ namespace DishShare.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Recipe", x => x.RecipeId);
+                    table.PrimaryKey("PK_Recipe", x => x.ID);
                     table.ForeignKey(
                         name: "FK_Recipe_SavedRecipesList_SavedRecipesListID",
                         column: x => x.SavedRecipesListID,
                         principalTable: "SavedRecipesList",
-                        principalColumn: "SavedRecipesListID",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -100,7 +100,7 @@ namespace DishShare.Migrations
                 name: "Comment",
                 columns: table => new
                 {
-                    CommentID = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -109,18 +109,18 @@ namespace DishShare.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comment", x => x.CommentID);
+                    table.PrimaryKey("PK_Comment", x => x.ID);
                     table.ForeignKey(
                         name: "FK_Comment_Recipe_RecipeID",
                         column: x => x.RecipeID,
                         principalTable: "Recipe",
-                        principalColumn: "RecipeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comment_User_UserID",
                         column: x => x.UserID,
                         principalTable: "User",
-                        principalColumn: "UserID",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -128,7 +128,7 @@ namespace DishShare.Migrations
                 name: "Rating",
                 columns: table => new
                 {
-                    RatingId = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RatingValue = table.Column<int>(type: "int", nullable: false),
                     RatingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -137,18 +137,18 @@ namespace DishShare.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rating", x => x.RatingId);
+                    table.PrimaryKey("PK_Rating", x => x.ID);
                     table.ForeignKey(
                         name: "FK_Rating_Recipe_RecipeID",
                         column: x => x.RecipeID,
                         principalTable: "Recipe",
-                        principalColumn: "RecipeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Rating_User_UserID",
                         column: x => x.UserID,
                         principalTable: "User",
-                        principalColumn: "UserID",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -156,7 +156,7 @@ namespace DishShare.Migrations
                 name: "RecipeAuthor",
                 columns: table => new
                 {
-                    RecipeAuthorID = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserRole = table.Column<int>(type: "int", nullable: true),
                     ContributionType = table.Column<int>(type: "int", nullable: true),
@@ -166,18 +166,18 @@ namespace DishShare.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RecipeAuthor", x => x.RecipeAuthorID);
+                    table.PrimaryKey("PK_RecipeAuthor", x => x.ID);
                     table.ForeignKey(
                         name: "FK_RecipeAuthor_Recipe_RecipeID",
                         column: x => x.RecipeID,
                         principalTable: "Recipe",
-                        principalColumn: "RecipeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_RecipeAuthor_User_UserID",
                         column: x => x.UserID,
                         principalTable: "User",
-                        principalColumn: "UserID",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -185,7 +185,7 @@ namespace DishShare.Migrations
                 name: "Tag",
                 columns: table => new
                 {
-                    TagID = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TagName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsPublic = table.Column<bool>(type: "bit", nullable: false),
@@ -194,18 +194,18 @@ namespace DishShare.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tag", x => x.TagID);
+                    table.PrimaryKey("PK_Tag", x => x.ID);
                     table.ForeignKey(
                         name: "FK_Tag_Recipe_RecipeID",
                         column: x => x.RecipeID,
                         principalTable: "Recipe",
-                        principalColumn: "RecipeId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tag_User_UserID",
                         column: x => x.UserID,
                         principalTable: "User",
-                        principalColumn: "UserID",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 

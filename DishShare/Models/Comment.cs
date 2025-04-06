@@ -2,7 +2,7 @@
 {
     public class Comment
     {
-        public int CommentID { get; set; }
+        public int ID { get; set; }
         public required string Content { get; set; }
         public DateTime CommentDate { get; set; }
         public int UserID { get; set; }

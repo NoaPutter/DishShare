@@ -21,6 +21,8 @@ namespace DishShare.Pages.Tags
 
         public IActionResult OnGet()
         {
+        ViewData["RecipeID"] = new SelectList(_context.Recipe, "ID", "ID");
+        ViewData["UserID"] = new SelectList(_context.User, "ID", "ID");
             return Page();
         }
 

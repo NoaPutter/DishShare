@@ -34,6 +34,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Recipe[0].Category)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].SavedRecipesList)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -62,9 +65,12 @@
                 @Html.DisplayFor(modelItem => item.Category)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.RecipeId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.RecipeId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.RecipeId">Delete</a>
+                @Html.DisplayFor(modelItem => item.SavedRecipesList.ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }

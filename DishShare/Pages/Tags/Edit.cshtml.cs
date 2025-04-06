@@ -30,12 +30,14 @@ namespace DishShare.Pages.Tags
                 return NotFound();
             }
 
-            var tag =  await _context.Tag.FirstOrDefaultAsync(m => m.TagID == id);
+            var tag =  await _context.Tag.FirstOrDefaultAsync(m => m.ID == id);
             if (tag == null)
             {
                 return NotFound();
             }
             Tag = tag;
+           ViewData["RecipeID"] = new SelectList(_context.Recipe, "ID", "ID");
+           ViewData["UserID"] = new SelectList(_context.User, "ID", "ID");
             return Page();
         }
 
@@ -56,7 +58,7 @@ namespace DishShare.Pages.Tags
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TagExists(Tag.TagID))
+                if (!TagExists(Tag.ID))
                 {
                     return NotFound();
                 }
@@ -71,7 +73,7 @@ namespace DishShare.Pages.Tags
 
         private bool TagExists(int id)
         {
-            return _context.Tag.Any(e => e.TagID == id);
+            return _context.Tag.Any(e => e.ID == id);
         }
     }
 }

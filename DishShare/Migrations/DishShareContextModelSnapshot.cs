@@ -24,11 +24,11 @@ namespace DishShare.Migrations
 
             modelBuilder.Entity("DishShare.Models.Comment", b =>
                 {
-                    b.Property<int>("CommentID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<DateTime>("CommentDate")
                         .HasColumnType("datetime2");
@@ -43,7 +43,7 @@ namespace DishShare.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.HasKey("CommentID");
+                    b.HasKey("ID");
 
                     b.HasIndex("RecipeID");
 
@@ -54,11 +54,11 @@ namespace DishShare.Migrations
 
             modelBuilder.Entity("DishShare.Models.Rating", b =>
                 {
-                    b.Property<int>("RatingId")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RatingId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<DateTime>("RatingDate")
                         .HasColumnType("datetime2");
@@ -72,7 +72,7 @@ namespace DishShare.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.HasKey("RatingId");
+                    b.HasKey("ID");
 
                     b.HasIndex("RecipeID");
 
@@ -83,11 +83,11 @@ namespace DishShare.Migrations
 
             modelBuilder.Entity("DishShare.Models.Recipe", b =>
                 {
-                    b.Property<int>("RecipeId")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecipeId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int?>("Category")
                         .HasColumnType("int");
@@ -117,7 +117,7 @@ namespace DishShare.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("RecipeId");
+                    b.HasKey("ID");
 
                     b.HasIndex("SavedRecipesListID");
 
@@ -126,11 +126,11 @@ namespace DishShare.Migrations
 
             modelBuilder.Entity("DishShare.Models.RecipeAuthor", b =>
                 {
-                    b.Property<int>("RecipeAuthorID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecipeAuthorID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int?>("ContributionType")
                         .HasColumnType("int");
@@ -147,7 +147,7 @@ namespace DishShare.Migrations
                     b.Property<int?>("UserRole")
                         .HasColumnType("int");
 
-                    b.HasKey("RecipeAuthorID");
+                    b.HasKey("ID");
 
                     b.HasIndex("RecipeID");
 
@@ -158,11 +158,11 @@ namespace DishShare.Migrations
 
             modelBuilder.Entity("DishShare.Models.SavedRecipe", b =>
                 {
-                    b.Property<int>("SavedRecipeID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SavedRecipeID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<DateTime>("AddingDate")
                         .HasColumnType("datetime2");
@@ -177,7 +177,7 @@ namespace DishShare.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.HasKey("SavedRecipeID");
+                    b.HasKey("ID");
 
                     b.HasIndex("UserID");
 
@@ -186,11 +186,11 @@ namespace DishShare.Migrations
 
             modelBuilder.Entity("DishShare.Models.SavedRecipesList", b =>
                 {
-                    b.Property<int>("SavedRecipesListID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SavedRecipesListID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("ListName")
                         .IsRequired()
@@ -199,7 +199,7 @@ namespace DishShare.Migrations
                     b.Property<int>("SavedRecipeID")
                         .HasColumnType("int");
 
-                    b.HasKey("SavedRecipesListID");
+                    b.HasKey("ID");
 
                     b.HasIndex("SavedRecipeID");
 
@@ -208,11 +208,11 @@ namespace DishShare.Migrations
 
             modelBuilder.Entity("DishShare.Models.Tag", b =>
                 {
-                    b.Property<int>("TagID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TagID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<bool>("IsPublic")
                         .HasColumnType("bit");
@@ -227,7 +227,7 @@ namespace DishShare.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.HasKey("TagID");
+                    b.HasKey("ID");
 
                     b.HasIndex("RecipeID");
 
@@ -238,11 +238,11 @@ namespace DishShare.Migrations
 
             modelBuilder.Entity("DishShare.Models.User", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -261,7 +261,7 @@ namespace DishShare.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserID");
+                    b.HasKey("ID");
 
                     b.ToTable("User");
                 });

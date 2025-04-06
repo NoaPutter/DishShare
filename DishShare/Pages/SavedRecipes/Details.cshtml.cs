@@ -28,7 +28,7 @@ namespace DishShare.Pages.SavedRecipes
                 return NotFound();
             }
 
-            var savedrecipe = await _context.SavedRecipe.FirstOrDefaultAsync(m => m.SavedRecipeID == id);
+            var savedrecipe = await _context.SavedRecipe.FirstOrDefaultAsync(m => m.ID == id);
             if (savedrecipe == null)
             {
                 return NotFound();

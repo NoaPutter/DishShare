@@ -28,7 +28,7 @@ namespace DishShare.Pages.Comments
                 return NotFound();
             }
 
-            var comment = await _context.Comment.FirstOrDefaultAsync(m => m.CommentID == id);
+            var comment = await _context.Comment.FirstOrDefaultAsync(m => m.ID == id);
             if (comment == null)
             {
                 return NotFound();

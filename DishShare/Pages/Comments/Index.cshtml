@@ -19,6 +19,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Comment[0].CommentDate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment[0].User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment[0].Recipe)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -32,9 +38,15 @@
                 @Html.DisplayFor(modelItem => item.CommentDate)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.CommentID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.CommentID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.CommentID">Delete</a>
+                @Html.DisplayFor(modelItem => item.User.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recipe.ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }

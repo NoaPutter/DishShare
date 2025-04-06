@@ -2,7 +2,7 @@
 {
     public class Tag
     {
-        public int TagID { get; set; }
+        public int ID { get; set; }
         public required string TagName { get; set; }
         public bool IsPublic { get; set; }
         public int UserID { get; set; }

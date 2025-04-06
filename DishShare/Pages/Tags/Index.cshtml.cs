@@ -23,7 +23,9 @@ namespace DishShare.Pages.Tags
 
         public async Task OnGetAsync()
         {
-            Tag = await _context.Tag.ToListAsync();
+            Tag = await _context.Tag
+                .Include(t => t.Recipe)
+                .Include(t => t.User).ToListAsync();
         }
     }
 }

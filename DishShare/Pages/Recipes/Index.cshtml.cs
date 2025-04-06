@@ -23,7 +23,8 @@ namespace DishShare.Pages.Recipes
 
         public async Task OnGetAsync()
         {
-            Recipe = await _context.Recipe.ToListAsync();
+            Recipe = await _context.Recipe
+                .Include(r => r.SavedRecipesList).ToListAsync();
         }
     }
 }

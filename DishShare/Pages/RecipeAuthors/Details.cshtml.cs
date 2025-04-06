@@ -28,7 +28,7 @@ namespace DishShare.Pages.RecipeAuthors
                 return NotFound();
             }
 
-            var recipeauthor = await _context.RecipeAuthor.FirstOrDefaultAsync(m => m.RecipeAuthorID == id);
+            var recipeauthor = await _context.RecipeAuthor.FirstOrDefaultAsync(m => m.ID == id);
             if (recipeauthor == null)
             {
                 return NotFound();

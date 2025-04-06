@@ -21,6 +21,7 @@ namespace DishShare.Pages.SavedRecipesLists
 
         public IActionResult OnGet()
         {
+        ViewData["SavedRecipeID"] = new SelectList(_context.SavedRecipe, "ID", "ID");
             return Page();
         }
 

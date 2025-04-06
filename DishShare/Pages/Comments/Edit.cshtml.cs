@@ -30,12 +30,14 @@ namespace DishShare.Pages.Comments
                 return NotFound();
             }
 
-            var comment =  await _context.Comment.FirstOrDefaultAsync(m => m.CommentID == id);
+            var comment =  await _context.Comment.FirstOrDefaultAsync(m => m.ID == id);
             if (comment == null)
             {
                 return NotFound();
             }
             Comment = comment;
+           ViewData["RecipeID"] = new SelectList(_context.Recipe, "ID", "ID");
+           ViewData["UserID"] = new SelectList(_context.User, "ID", "ID");
             return Page();
         }
 
@@ -56,7 +58,7 @@ namespace DishShare.Pages.Comments
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CommentExists(Comment.CommentID))
+                if (!CommentExists(Comment.ID))
                 {
                     return NotFound();
                 }
@@ -71,7 +73,7 @@ namespace DishShare.Pages.Comments
 
         private bool CommentExists(int id)
         {
-            return _context.Comment.Any(e => e.CommentID == id);
+            return _context.Comment.Any(e => e.ID == id);
         }
     }
 }

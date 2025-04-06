@@ -10,7 +10,7 @@
     }
     public class RecipeAuthor
     {
-        public int RecipeAuthorID { get; set; }
+        public int ID { get; set; }
         public UserRole? UserRole { get; set; }
         public ContributionType? ContributionType { get; set; }
         public DateTime CreationDate { get; set; }

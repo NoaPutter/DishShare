@@ -30,12 +30,14 @@ namespace DishShare.Pages.RecipeAuthors
                 return NotFound();
             }
 
-            var recipeauthor =  await _context.RecipeAuthor.FirstOrDefaultAsync(m => m.RecipeAuthorID == id);
+            var recipeauthor =  await _context.RecipeAuthor.FirstOrDefaultAsync(m => m.ID == id);
             if (recipeauthor == null)
             {
                 return NotFound();
             }
             RecipeAuthor = recipeauthor;
+           ViewData["RecipeID"] = new SelectList(_context.Recipe, "ID", "ID");
+           ViewData["UserID"] = new SelectList(_context.User, "ID", "ID");
             return Page();
         }
 
@@ -56,7 +58,7 @@ namespace DishShare.Pages.RecipeAuthors
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RecipeAuthorExists(RecipeAuthor.RecipeAuthorID))
+                if (!RecipeAuthorExists(RecipeAuthor.ID))
                 {
                     return NotFound();
                 }
@@ -71,7 +73,7 @@ namespace DishShare.Pages.RecipeAuthors
 
         private bool RecipeAuthorExists(int id)
         {
-            return _context.RecipeAuthor.Any(e => e.RecipeAuthorID == id);
+            return _context.RecipeAuthor.Any(e => e.ID == id);
         }
     }
 }

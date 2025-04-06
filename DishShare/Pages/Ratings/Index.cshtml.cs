@@ -23,7 +23,9 @@ namespace DishShare.Pages.Ratings
 
         public async Task OnGetAsync()
         {
-            Rating = await _context.Rating.ToListAsync();
+            Rating = await _context.Rating
+                .Include(r => r.Recipe)
+                .Include(r => r.User).ToListAsync();
         }
     }
 }

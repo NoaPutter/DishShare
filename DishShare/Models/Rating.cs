@@ -7,7 +7,7 @@
 
     public class Rating
     {
-        public int RatingId { get; set; }
+        public int ID { get; set; }
         public required RatingValue RatingValue { get; set; }
         public DateTime RatingDate { get; set; }
         public int UserID { get; set; }

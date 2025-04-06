@@ -13,7 +13,7 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Tag.TagID" />
+            <input type="hidden" asp-for="Tag.ID" />
             <div class="form-group">
                 <label asp-for="Tag.TagName" class="control-label"></label>
                 <input asp-for="Tag.TagName" class="form-control" />
@@ -23,6 +23,16 @@
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Tag.IsPublic" /> @Html.DisplayNameFor(model => model.Tag.IsPublic)
                 </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag.UserID" class="control-label"></label>
+                <select asp-for="Tag.UserID" class="form-control" asp-items="ViewBag.UserID"></select>
+                <span asp-validation-for="Tag.UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag.RecipeID" class="control-label"></label>
+                <select asp-for="Tag.RecipeID" class="form-control" asp-items="ViewBag.RecipeID"></select>
+                <span asp-validation-for="Tag.RecipeID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

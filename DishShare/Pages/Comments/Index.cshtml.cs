@@ -23,7 +23,9 @@ namespace DishShare.Pages.Comments
 
         public async Task OnGetAsync()
         {
-            Comment = await _context.Comment.ToListAsync();
+            Comment = await _context.Comment
+                .Include(c => c.Recipe)
+                .Include(c => c.User).ToListAsync();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace DishShare.Pages.Recipes
                 return NotFound();
             }
 
-            var recipe = await _context.Recipe.FirstOrDefaultAsync(m => m.RecipeId == id);
+            var recipe = await _context.Recipe.FirstOrDefaultAsync(m => m.ID == id);
 
             if (recipe == null)
             {

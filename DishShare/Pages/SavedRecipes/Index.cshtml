@@ -22,6 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.SavedRecipe[0].PersonalNotes)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SavedRecipe[0].User)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -38,9 +41,12 @@
                 @Html.DisplayFor(modelItem => item.PersonalNotes)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.SavedRecipeID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.SavedRecipeID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.SavedRecipeID">Delete</a>
+                @Html.DisplayFor(modelItem => item.User.ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }

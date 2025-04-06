@@ -2,7 +2,7 @@
 {
     public class SavedRecipe
     {
-        public int SavedRecipeID { get; set; }
+        public int ID { get; set; }
         public DateTime AddingDate { get; set; }
         public required string CollectionName { get; set; }
         public string? PersonalNotes { get; set; }

@@ -28,7 +28,7 @@ namespace DishShare.Pages.Ratings
                 return NotFound();
             }
 
-            var rating = await _context.Rating.FirstOrDefaultAsync(m => m.RatingId == id);
+            var rating = await _context.Rating.FirstOrDefaultAsync(m => m.ID == id);
             if (rating == null)
             {
                 return NotFound();

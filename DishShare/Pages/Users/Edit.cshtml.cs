@@ -30,7 +30,7 @@ namespace DishShare.Pages.Users
                 return NotFound();
             }
 
-            var user =  await _context.User.FirstOrDefaultAsync(m => m.UserID == id);
+            var user =  await _context.User.FirstOrDefaultAsync(m => m.ID == id);
             if (user == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace DishShare.Pages.Users
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(User.UserID))
+                if (!UserExists(User.ID))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace DishShare.Pages.Users
 
         private bool UserExists(int id)
         {
-            return _context.User.Any(e => e.UserID == id);
+            return _context.User.Any(e => e.ID == id);
         }
     }
 }

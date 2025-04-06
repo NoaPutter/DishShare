@@ -30,12 +30,14 @@ namespace DishShare.Pages.Ratings
                 return NotFound();
             }
 
-            var rating =  await _context.Rating.FirstOrDefaultAsync(m => m.RatingId == id);
+            var rating =  await _context.Rating.FirstOrDefaultAsync(m => m.ID == id);
             if (rating == null)
             {
                 return NotFound();
             }
             Rating = rating;
+           ViewData["RecipeID"] = new SelectList(_context.Recipe, "ID", "ID");
+           ViewData["UserID"] = new SelectList(_context.User, "ID", "ID");
             return Page();
         }
 
@@ -56,7 +58,7 @@ namespace DishShare.Pages.Ratings
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RatingExists(Rating.RatingId))
+                if (!RatingExists(Rating.ID))
                 {
                     return NotFound();
                 }
@@ -71,7 +73,7 @@ namespace DishShare.Pages.Ratings
 
         private bool RatingExists(int id)
         {
-            return _context.Rating.Any(e => e.RatingId == id);
+            return _context.Rating.Any(e => e.ID == id);
         }
     }
 }

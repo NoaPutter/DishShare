@@ -13,7 +13,7 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Comment.CommentID" />
+            <input type="hidden" asp-for="Comment.ID" />
             <div class="form-group">
                 <label asp-for="Comment.Content" class="control-label"></label>
                 <input asp-for="Comment.Content" class="form-control" />
@@ -23,6 +23,16 @@
                 <label asp-for="Comment.CommentDate" class="control-label"></label>
                 <input asp-for="Comment.CommentDate" class="form-control" />
                 <span asp-validation-for="Comment.CommentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment.UserID" class="control-label"></label>
+                <select asp-for="Comment.UserID" class="form-control" asp-items="ViewBag.UserID"></select>
+                <span asp-validation-for="Comment.UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment.RecipeID" class="control-label"></label>
+                <select asp-for="Comment.RecipeID" class="form-control" asp-items="ViewBag.RecipeID"></select>
+                <span asp-validation-for="Comment.RecipeID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

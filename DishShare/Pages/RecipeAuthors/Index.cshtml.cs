@@ -23,7 +23,9 @@ namespace DishShare.Pages.RecipeAuthors
 
         public async Task OnGetAsync()
         {
-            RecipeAuthor = await _context.RecipeAuthor.ToListAsync();
+            RecipeAuthor = await _context.RecipeAuthor
+                .Include(r => r.Recipe)
+                .Include(r => r.User).ToListAsync();
         }
     }
 }

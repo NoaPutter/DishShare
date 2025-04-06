@@ -49,6 +49,10 @@
                 <span asp-validation-for="Recipe.Category" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Recipe.SavedRecipesListID" class="control-label"></label>
+                <select asp-for="Recipe.SavedRecipesListID" class ="form-control" asp-items="ViewBag.SavedRecipesListID"></select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
